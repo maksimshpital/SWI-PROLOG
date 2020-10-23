@@ -1,0 +1,5 @@
+replace([], _OldValue, _NewValue, []):-!.
+replace([OldValue|Tail], OldValue, NewValue, [NewValue|ReplacedTail]):-
+  !, replace(Tail, OldValue, NewValue, ReplacedTail).
+replace([Head|Tail], OldValue, NewValue, [Head|ReplacedTail]):-
+  replace(Tail, OldValue, NewValue, ReplacedTail).
