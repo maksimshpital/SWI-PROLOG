@@ -1,0 +1,6 @@
+rm_single([], _Buffer, []):-!.
+rm_single([Head|Tail], Buffer, [Head|TailResult]):-
+  member(Head, Tail), !, rm_single(Tail, [Head|Buffer], TailResult);
+  member(Head, Buffer), !, rm_single(Tail, [Head|Buffer], TailResult).
+rm_single([Head|Tail], Buffer, [Head,Head|TailResult]):-
+  rm_single(Tail, [Head|Buffer], TailResult).
