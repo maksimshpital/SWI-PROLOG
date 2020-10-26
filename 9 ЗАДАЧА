@@ -1,0 +1,16 @@
+goal
+  file_str("D:/Work/input.txt", InitialString), 
+  string_to_list(InitialString, InitialList),
+  remove_repeated(InitialList, ListWithoutRepeated),
+  list_to_string(ListWithoutRepeated, StringWithoutRepeated),
+  write(StringWithoutRepeated), nl.
+  
+remove_repeated([], []):-!. 
+  % если исходный список не содержит элементов - результатом является пустой список
+remove_repeated([Head|Tail], [Head|TailWithoutRepeated]):- 
+  % исходный список разделяется на первый элемент и остальные
+  % первый элемент безусловно помещается в начало списка-результата
+  delete(Tail, Head, TailWithoutHead), 
+  % при помощи готовой функции delete из списка Tail удаляются все вхождения Head
+  remove_repeated(TailWithoutHead, TailWithoutRepeated).
+  % остальные элементы формируются рекурсивно
