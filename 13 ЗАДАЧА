@@ -1,0 +1,13 @@
+get_column(_ColumnNumber, [], []):-!.
+get_column(ColumnNumber, [Row|Tail], [Element|TailColumn]):-
+  nth0(ColumnNumber, Row, Element), 
+  get_column(ColumnNumber, Tail, TailColumn).
+  
+  transposition(Matrix, TransposeMatrix):-
+  transposition(0, Matrix, TransposeMatrix).
+ 
+transposition(Iterator, Matrix, [Column|TransposeTail]):-
+  TailIterator is Iterator + 1,
+  get_column(Iterator, Matrix, Column), !,
+  transposition(TailIterator, Matrix, TransposeTail).
+transposition(_Iterator, _Matrix, []).
