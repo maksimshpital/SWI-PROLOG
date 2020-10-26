@@ -1,0 +1,8 @@
+selection_sort(List, SortedList):-
+  selection_sort(List, [], SortedList).
+  
+selection_sort([], SortedList, SortedList):-!.
+selection_sort(UnSortedPart, SortedPart, SortedList):-
+  min_list(UnSortedPart, MinElement),
+  delete_single_element(UnSortedPart, MinElement, UnSortedTail),
+  selection_sort(UnSortedTail, [MinElement|SortedPart], SortedList).
