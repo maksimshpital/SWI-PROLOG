@@ -1,0 +1,13 @@
+greatest_common_divisor(A, B, GCD):-
+    AmB is A mod B,
+    BmA is B mod A,
+    (
+      AmB == 0, !, GCD is B;
+      BmA == 0, !, GCD is A;
+      A > B, !, greatest_common_divisor(AmB, B, GCD);
+      greatest_common_divisor(A, BmA, GCD)
+    ).
+             
+least_common_multiple(A, B, LCM):-
+    greatest_common_divisor(A, B, GCD),
+    LCM is (A*B)/GCD.
