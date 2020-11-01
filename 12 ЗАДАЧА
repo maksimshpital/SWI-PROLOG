@@ -1,0 +1,7 @@
+scalar_multiplication(ListA, ListB, Multiplication):-
+  scalar_multiplication(ListA, ListB, 0, Multiplication).
+  
+scalar_multiplication([], [], Multiplication, Multiplication):-!.
+scalar_multiplication([HeadA|TailA], [HeadB|TailB], Buffer, Multiplication):-
+  NewBuffer is Buffer + HeadA * HeadB,
+  scalar_multiplication(TailA, TailB, NewBuffer, Multiplication).
