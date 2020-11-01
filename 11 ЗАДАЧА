@@ -1,0 +1,9 @@
+slide_left(List, N, Slided):-
+  append(Left, Right, List),
+  length(Left, N),
+  append(Right, Left, Slided), !.
+  
+slide_right(List, N, Slided):-
+  append(Left, Right, List),
+  length(Right, N),
+  append(Right, Left, Slided), !.
