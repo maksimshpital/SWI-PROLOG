@@ -1,0 +1,12 @@
+insert(Element, [], [Element]):-!.
+insert(Element, [Head|Tail], [Element, Head|Tail]):-
+  Element < Head, !.
+insert(Element, [Head|Tail], [Head|InsertTail]):-
+  insert(Element, Tail, InsertTail).
+  
+  insertion_sort(List, SortedList):-
+  insertion_sort(List, [], SortedList).
+insertion_sort([], SortedList, SortedList):-!.
+insertion_sort([Head|Tail], SortedPart, SortedList):-
+  insert(Head, SortedPart, SortedPartWithHead),
+  insertion_sort(Tail, SortedPartWithHead, SortedList).
