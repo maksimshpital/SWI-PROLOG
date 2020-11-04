@@ -1,0 +1,13 @@
+negpos([], _, []):-!.
+%независимо от значения номера текущего элемента, в результате формируется пустой список.
+negpos([Head|Tail], index, Positions):-
+nextindex is index + 1, (
+%классический инкремент текущей позиции
+Head >= 0, !,
+negpos(Tail, nextindex, Positions);
+%если Head >= 0, то вернётся список, полученный при рекурсивной обработке хвоста
+negpos(Tail, nextindex, TailPositions),
+Positions = [nextindex|TailPositions]
+%иначе при обработке хвоста будет получен некоторый список позиций TailPositions,
+%а наш результат, Positions, сформируется добавлением в список TailPositions значения nextindex.
+).
