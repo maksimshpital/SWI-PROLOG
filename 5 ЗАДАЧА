@@ -1,6 +1,4 @@
-rm_single([], _Buffer, []):-!.
-rm_single([Head|Tail], Buffer, [Head|TailResult]):-
-  member(Head, Tail), !, rm_single(Tail, [Head|Buffer], TailResult);
-  member(Head, Buffer), !, rm_single(Tail, [Head|Buffer], TailResult).
-rm_single([Head|Tail], Buffer, [Head,Head|TailResult]):-
-  rm_single(Tail, [Head|Buffer], TailResult).
+%голову 2го списка умножаем на 2, хвосты передаём рекурсивно, чтобы и хвост для 2го списка так же перемножился
+double([Head|Tail], [H2|Tail2]):- H2 is Head * 2, double(Tail, Tail2).
+%когда хвост пустой, то и умножать нечего
+double([],[]).
