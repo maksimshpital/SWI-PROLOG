@@ -1,1 +1,1 @@
-# SIW-PROLOG
+# SWI-PROLOG
